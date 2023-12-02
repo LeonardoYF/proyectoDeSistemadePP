@@ -1,0 +1,134 @@
+{
+  "postulante": [
+    {
+      "url": "/",
+      "name": "Home",
+      "icon": "menu-icon tf-icons bx bx-home-circle",
+      "slug": "pages-home"
+    },
+    
+    {
+      "menuHeader": "OFERTAS"
+    },
+    {
+      "name": "Buscar Practicas",
+      "icon": "menu-icon tf-icons bx bx-search fs-4 lh-0",
+      "slug": "convocatorias",
+      "url": "/convocatorias"
+    },
+    {
+      "menuHeader": "Mi Perfil"
+    },
+    {
+      "name": "Mi cv",
+      "icon": "menu-icon tf-icons bx bx-id-card",
+      "slug": "mi-perfil",
+      "url": "/perfil"
+    },
+    {
+      "name": "Mis Postulaciones",
+      "icon": "menu-icon tf-icons bx bx-briefcase",
+      "slug": "mis-postulaciones",
+      "url": "/postulaciones"
+    },
+    {
+      "menuHeader": "Cuenta"
+    },
+    {
+      "name": "Configuracion",
+      "icon": "menu-icon tf-icons bx bx-cog",
+      "slug": "mi-perfil",
+      "url": "/user/profile"
+    },
+    {
+      "name": "Cerrar Sesión",
+      "icon": "menu-icon tf-icons bx bx-log-out",
+      "slug": "mi-perfil",
+      "url": "/logout"
+    }  
+  ],
+  "empresa": [
+    {
+      "url": "/",
+      "name": "Home",
+      "icon": "menu-icon tf-icons bx bx-home-circle",
+      "slug": "seunp"
+    },
+    {
+      "menuHeader": "EMPRESAS"
+    },
+    {
+      "name": "Avisos",
+      "icon": "menu-icon tf-icons bx bx-search fs-4 lh-0",
+      "slug": "convocatorias",
+      "url": "/avisos"
+    },
+    {
+      "name": "Perfil Empresa",
+      "icon": "menu-icon tf-icons bx bx-cog",
+      "slug": "mi-perfil-empresas",
+      "url": "/convocatorias/convocatorias"
+    },
+    {
+      "menuHeader": "Cuenta"
+    },
+    {
+      "name": "Configuracion",
+      "icon": "menu-icon tf-icons bx bx-cog",
+      "slug": "mi-perfil",
+      "url": "/user/profile"
+    },
+    {
+      "name": "Cerrar Sesión",
+      "icon": "menu-icon tf-icons bx bx-log-out",
+      "slug": "mi-perfil",
+      "url": "/logout"
+    }  
+    
+  ],
+  "admin": [
+    
+    {
+      "url": "/",
+      "name": "Home",
+      "icon": "menu-icon tf-icons bx bx-home-circle",
+      "slug": "seunp"
+    },
+    {
+      "menuHeader": "ADMINISTRADOR"
+    },
+    {
+      "name": "Estudiantes",
+      "icon": "menu-icon tf-icons bx bx-search fs-4 lh-0",
+      "slug": "convocatorias",
+      "url": "/convocatorias/convocatorias"
+    },
+    {
+      "name": "Empresas",
+      "icon": "menu-icon tf-icons bx bx-cog",
+      "slug": "mi-perfil-empresas",
+      "url": "/convocatorias/convocatorias"
+    },
+    {
+      "name": "Avisos",
+      "icon": "menu-icon tf-icons bx bx-cog",
+      "slug": "mi-perfil-empresas",
+      "url": "/convocatorias/convocatorias"
+    },
+    {
+      "menuHeader": "Cuenta"
+    },
+    {
+      "name": "Configuracion",
+      "icon": "menu-icon tf-icons bx bx-cog",
+      "slug": "mi-perfil",
+      "url": "/user/profile"
+    },
+    {
+      "name": "Cerrar Sesión",
+      "icon": "menu-icon tf-icons bx bx-log-out",
+      "slug": "mi-perfil",
+      "url": "/logout"
+    }  
+  ]
+}
