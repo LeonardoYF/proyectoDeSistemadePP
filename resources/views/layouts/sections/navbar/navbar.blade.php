@@ -42,10 +42,44 @@ $containerNav = $containerNav ?? 'container-fluid';
           <i class='bx bx-sm'></i>
         </a>
       </div>
+      @role('admin')      
+        <!--/ prueba-->
+        <ul class="navbar-nav flex-row align-items-center ms-auto">
+
+          <!-- User -->
+          
+
+          
+          <li class="nav-item navbar-dropdown dropdown-user dropdown">
+            <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+              <div class="d-flex align-items-start position-relative">
+                <img src="{{asset('assets/img/avatars/bell.png')}}">
+                <span class="badge bg-danger rounded-circle position-absolute top-60 start-98">
+                  1
+                </span>
+              </div>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li class="d-flex align-items-center justify-content-center">
+                  <span class="align-middle fw-bold">Notificaciones</span>
+              </li>
+              <li>
+                <div class="dropdown-divider"></div>
+              </li>
+              
+            </ul>
+          </li>
+          
+          <!--/ User -->
+        </ul>
+        
+      @endrole
+     
+      <!-- prueba-->
       <!--/ Style Switcher -->
 
-      <ul class="navbar-nav flex-row align-items-center ms-auto">
-
+      <ul class="navbar-nav flex-row align-items-center @if(!auth()->user()->hasRole('admin')) ms-auto @endif">
+      
         <!-- User -->
         <li class="nav-item navbar-dropdown dropdown-user dropdown">
           <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
@@ -171,6 +205,7 @@ $containerNav = $containerNav ?? 'container-fluid';
         </li>
         <!--/ User -->
       </ul>
+      
     </div>
 
   </div>

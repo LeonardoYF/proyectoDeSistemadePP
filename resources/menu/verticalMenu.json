@@ -97,21 +97,22 @@
     {
       "menuHeader": "ADMINISTRADOR"
     },
+   
     {
       "name": "Estudiantes",
-      "icon": "menu-icon tf-icons bx bx-search fs-4 lh-0",
+      "icon": "menu-icon tf-icons bx bx-user rectangle fs-4 lh-0",
       "slug": "convocatorias",
-      "url": "/convocatorias/convocatorias"
+      "url": "/admin/estudiantes"
     },
     {
       "name": "Empresas",
-      "icon": "menu-icon tf-icons bx bx-cog",
+      "icon": "menu-icon tf-icons bx bx-group fs-4 lh-0",
       "slug": "mi-perfil-empresas",
-      "url": "/convocatorias/convocatorias"
+      "url": "/admin/empresas"
     },
     {
       "name": "Avisos",
-      "icon": "menu-icon tf-icons bx bx-cog",
+      "icon": "menu-icon tf-icons bx bx-message-alt-detail fs-4 lh-0",
       "slug": "mi-perfil-empresas",
       "url": "/convocatorias/convocatorias"
     },
@@ -119,8 +120,8 @@
       "menuHeader": "Cuenta"
     },
     {
-      "name": "Configuracion",
-      "icon": "menu-icon tf-icons bx bx-cog",
+      "name": "Mi Cuenta",
+      "icon": "menu-icon tf-icons bx bx-user fs-4 lh-0" ,
       "slug": "mi-perfil",
       "url": "/user/profile"
     },
@@ -129,6 +130,7 @@
       "icon": "menu-icon tf-icons bx bx-log-out",
       "slug": "mi-perfil",
       "url": "/logout"
-    }  
+    } 
+    
   ]
 }

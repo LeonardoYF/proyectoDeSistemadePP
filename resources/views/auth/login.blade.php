@@ -53,7 +53,7 @@ $customizerHidden = 'customizer-hide';
               <label class="form-label" for="login-password">Contraseña</label>
               @if (Route::has('password.request'))
               <a href="{{ route('password.request') }}">
-                <small>Forgot Password?</small>
+                <small>Olvidaste tu contraseña?</small>
               </a>
               @endif
             </div>
