@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EmpresasController extends Controller
 {
-    //
+    
+ 
     public function index(Request $request)
     {
         // Obtener los términos de búsqueda del formulario
@@ -33,7 +35,11 @@ class EmpresasController extends Controller
     }
     public function update(Request $request, $id)
     {
-        
+        $isAdmin = Auth::user()->roles->where('name', 'admin')->isNotEmpty();
+
+        if (!$isAdmin) {
+            abort(403, 'Acceso no autorizado');
+        }
         $request->validate([
             'estado' => 'required|in:APROBADO,PENDIENTE,RECHAZADO',
         ]);

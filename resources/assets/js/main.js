@@ -87,9 +87,9 @@ if (document.getElementById('layout-menu')) {
     if (styleSwitcherToggleEl) {
       styleSwitcherToggleEl.addEventListener('click', function () {
         if (window.Helpers.isLightStyle()) {
-          window.templateCustomizer.setStyle('dark');
+          window.templateCustomizer.setStyle('oscuro');
         } else {
-          window.templateCustomizer.setStyle('light');
+          window.templateCustomizer.setStyle('claro');
         }
       });
     }
@@ -98,20 +98,20 @@ if (document.getElementById('layout-menu')) {
       if (styleSwitcherToggleEl) {
         styleSwitcherToggleEl.querySelector('i').classList.add('bx-moon');
         new bootstrap.Tooltip(styleSwitcherToggleEl, {
-          title: 'Dark mode',
+          title: 'Modo Oscuro',
           fallbackPlacements: ['bottom']
         });
       }
-      switchImage('light');
+      switchImage('claro');
     } else {
       if (styleSwitcherToggleEl) {
         styleSwitcherToggleEl.querySelector('i').classList.add('bx-sun');
         new bootstrap.Tooltip(styleSwitcherToggleEl, {
-          title: 'Light mode',
+          title: 'Modo Claro',
           fallbackPlacements: ['bottom']
         });
       }
-      switchImage('dark');
+      switchImage('oscuro');
     }
   }
 
