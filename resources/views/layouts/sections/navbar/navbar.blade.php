@@ -42,49 +42,53 @@ $containerNav = $containerNav ?? 'container-fluid';
           <i class='bx bx-sm'></i>
         </a>
       </div>
-      @role('admin')      
-        <!--/ prueba-->
-        <ul class="navbar-nav flex-row align-items-center ms-auto">
+      @role('admin')
+      <!--/ prueba-->
+      <ul class="navbar-nav flex-row align-items-center ms-auto">
 
-          <!-- User -->
-          
+        <!-- User -->
 
-          
-          <li class="nav-item navbar-dropdown dropdown-user dropdown">
-            <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-              <div class="d-flex align-items-start position-relative">
-                <img src="{{asset('assets/img/avatars/bell.png')}}">
-                <span class="badge bg-danger rounded-circle position-absolute top-60 start-98">
-                  1
-                </span>
-              </div>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end">
-              <li class="d-flex align-items-center justify-content-center">
-                  <span class="align-middle fw-bold">Notificaciones</span>
-              </li>
-              <li>
-                <div class="dropdown-divider"></div>
-              </li>
-              
-            </ul>
-          </li>
-          
-          <!--/ User -->
-        </ul>
-        
+
+
+        <li class="nav-item navbar-dropdown dropdown-user dropdown">
+          <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+            <div class="d-flex align-items-start position-relative">
+              <img src="{{asset('assets/img/avatars/bell.png')}}">
+              <span class="badge bg-danger rounded-circle position-absolute top-60 start-98">
+                1
+              </span>
+            </div>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li class="d-flex align-items-center justify-content-center">
+              <span class="align-middle fw-bold">Notificaciones</span>
+            </li>
+            <li>
+              <div class="dropdown-divider"></div>
+            </li>
+
+          </ul>
+        </li>
+
+        <!--/ User -->
+      </ul>
+
       @endrole
-     
+
       <!-- prueba-->
       <!--/ Style Switcher -->
 
       <ul class="navbar-nav flex-row align-items-center @if(!auth()->user()->hasRole('admin')) ms-auto @endif">
-      
+
         <!-- User -->
         <li class="nav-item navbar-dropdown dropdown-user dropdown">
           <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
             <div class="avatar avatar-online">
-              <img src="{{ Auth::user() ? Auth::user()->profile_photo_url : asset('assets/img/avatars/1.png') }}" alt class="rounded-circle">
+              @if(Auth::user() && Auth::user()->profile_photo_path)
+              <img src="{{ asset('storage/' . Auth::user()->profile_photo_path) }}" alt class="rounded-circle">
+              @else
+              <img src="{{ asset('assets/img/avatars/1.png') }}" alt class="rounded-circle">
+              @endif
             </div>
           </a>
           <ul class="dropdown-menu dropdown-menu-end">
@@ -93,7 +97,11 @@ $containerNav = $containerNav ?? 'container-fluid';
                 <div class="d-flex">
                   <div class="flex-shrink-0 me-3">
                     <div class="avatar avatar-online">
-                      <img src="{{ Auth::user() ? Auth::user()->profile_photo_url : asset('assets/img/avatars/1.png') }}" alt class="rounded-circle">
+                      @if(Auth::user() && Auth::user()->profile_photo_path)
+                      <img src="{{ asset('storage/' . Auth::user()->profile_photo_path) }}" alt class="rounded-circle">
+                      @else
+                      <img src="{{ asset('assets/img/avatars/1.png') }}" alt class="rounded-circle">
+                      @endif
                     </div>
                   </div>
                   <div class="flex-grow-1">
@@ -105,19 +113,19 @@ $containerNav = $containerNav ?? 'container-fluid';
                       @endif
                     </span>
                     @php
-                      $user = auth()->user();
+                    $user = auth()->user();
 
-                      if ($user) {
-                          // Obtener el primer rol del usuario
-                          $roles = $user->roles;
+                    if ($user) {
+                    // Obtener el primer rol del usuario
+                    $roles = $user->roles;
 
-                          if (!empty($roles)) {
-                              $primerRol = $roles[0]->name;
-                              // $primerRol ahora contiene el nombre del primer rol del usuario
-                              
-                          }
-                      }
-                      @endphp
+                    if (!empty($roles)) {
+                    $primerRol = $roles[0]->name;
+                    // $primerRol ahora contiene el nombre del primer rol del usuario
+
+                    }
+                    }
+                    @endphp
                     <small class="text-muted">{{$primerRol}}</small>
                   </div>
                 </div>
@@ -139,7 +147,7 @@ $containerNav = $containerNav ?? 'container-fluid';
                 <span class="align-middle">API Tokens</span>
               </a>
             </li>
-            
+
             <li>
               <div class="dropdown-divider"></div>
             </li>
@@ -205,7 +213,7 @@ $containerNav = $containerNav ?? 'container-fluid';
         </li>
         <!--/ User -->
       </ul>
-      
+
     </div>
 
   </div>

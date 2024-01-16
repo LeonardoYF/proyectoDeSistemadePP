@@ -39,13 +39,7 @@
       "icon": "menu-icon tf-icons bx bx-cog",
       "slug": "mi-perfil",
       "url": "/user/profile"
-    },
-    {
-      "name": "Cerrar Sesión",
-      "icon": "menu-icon tf-icons bx bx-log-out",
-      "slug": "mi-perfil",
-      "url": "/logout"
-    }  
+    } 
   ],
   "empresa": [
     {
@@ -77,13 +71,7 @@
       "icon": "menu-icon tf-icons bx bx-cog",
       "slug": "mi-perfil",
       "url": "/user/profile"
-    },
-    {
-      "name": "Cerrar Sesión",
-      "icon": "menu-icon tf-icons bx bx-log-out",
-      "slug": "mi-perfil",
-      "url": "/logout"
-    }  
+    } 
     
   ],
   "admin": [
@@ -117,6 +105,15 @@
       "url": "/convocatorias/convocatorias"
     },
     {
+      "menuHeader": "REPORTES"
+    },
+    {
+      "name": "Reportes",
+      "icon": "menu-icon tf-icons bx bx-message-alt-detail fs-4 lh-0",
+      "slug": "mi-perfil-empresas",
+      "url": "/convocatorias/convocatorias"
+    },
+    {
       "menuHeader": "Cuenta"
     },
     {
@@ -124,13 +121,8 @@
       "icon": "menu-icon tf-icons bx bx-user fs-4 lh-0" ,
       "slug": "mi-perfil",
       "url": "/user/profile"
-    },
-    {
-      "name": "Cerrar Sesión",
-      "icon": "menu-icon tf-icons bx bx-log-out",
-      "slug": "mi-perfil",
-      "url": "/logout"
-    } 
+    }
+    
     
   ]
 }

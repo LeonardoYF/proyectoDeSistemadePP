@@ -41,7 +41,7 @@ $configData = Helper::appClasses();
       <div class="row">
         <div class="row g-3">
         <div class="col-12 col-sm-6 col-lg-4">
-            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="submit" class="btn btn-primary">Buscar</button>
         </div>
             
         </div>

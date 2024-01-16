@@ -30,7 +30,11 @@
                     <div class="row">
                         <div class="col-sm-4 text-center text-sm-left">
                             <div class="card-body pb-0 px-0 px-md-4">
-                                <img src="{{asset('assets/img/illustrations/man-with-laptop-light.png')}}" height="140" alt="View Badge User" data-app-dark-img="illustrations/man-with-laptop-dark.png" data-app-light-img="illustrations/man-with-laptop-light.png">
+                                @if(Auth::user() && Auth::user()->profile_photo_path)
+                                <img src="{{ asset('storage/' . Auth::user()->profile_photo_path) }}" alt class="rounded-circle">
+                                @else
+                                <img src="{{ asset('assets/img/avatars/1.png') }}" alt class="rounded-circle">
+                                @endif
                             </div>
 
                         </div>
@@ -50,7 +54,7 @@
                             <p class="card-text">
                                 {{ __('Castilla,Piura') }}
                             </p>
-                            
+
                         </div>
 
                     </div>
@@ -168,7 +172,7 @@
                                         <div class="card-body">
                                             <div class="card-title d-flex align-items-start justify-content-between">
                                                 <h5 class="fw-semibold d-block mb-1">Empresa</h5>
-                                                
+
                                                 <button class="btn btn-sm btn-outline-primary" type="button" id="cardOpt1" data-bs-toggle="modal" data-bs-target="#modalExperiencia">
                                                     <i class="bx bx-pencil"></i>Editar
                                                 </button>
@@ -253,7 +257,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <a href="javascript:;" class="btn btn-sm btn-primary">Añadir</a>
                 </div>
             </div>
@@ -383,7 +387,7 @@
                             <p class="card-text">
                                 {{ __('926444798') }}
                             </p>
-                            
+
                         </div>
 
                     </div>
@@ -478,8 +482,8 @@
                             <p class="card-text">
                                 {{ __('LINK 1') }}
                             </p>
-                            
-                            
+
+
                         </div>
 
                     </div>
@@ -502,14 +506,14 @@
                                                     <table class="table table-bordered">
                                                         <thead>
                                                             <tr>
-                                                                <td>Link</td>       
+                                                                <td>Link</td>
                                                                 <td>Opciones</td>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr>
                                                                 <td>Excel</td>
-                                                                
+
                                                                 <td>
 
                                                                 </td>
@@ -524,7 +528,7 @@
                                                 <label for="fechaInicio" class="form-label">Link</label>
                                                 <input type="text" id="fechaInicio" class="form-control" placeholder="Link">
                                             </div>
-                                            
+
                                         </div>
                                         <button type="button" class="btn btn-primary">AGREGAR</button>
 

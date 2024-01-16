@@ -13,7 +13,7 @@ $configData = Helper::appClasses();
   <h5 class="card-header">Listado Empresas</h5>
   <!--Search Form -->
   <div class="card-body">
-    <form class="dt_adv_search" action="{{route('admin.estudiantes.index')}}" method="GET">
+    <form class="dt_adv_search" action="{{route('admin.empresas.index')}}" method="GET">
     @csrf
       <div class="row">
         <div class="col-12">
@@ -41,7 +41,7 @@ $configData = Helper::appClasses();
       <div class="row">
         <div class="row g-3">
         <div class="col-12 col-sm-6 col-lg-4">
-            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="submit" class="btn btn-primary">Buscar</button>
         </div>
             
         </div>
@@ -83,7 +83,7 @@ $configData = Helper::appClasses();
     </tbody>
     <tfoot>
         <tr>
-            <th>TABLA DE ESTUDIANTES</th>
+            <th>TABLA DE EMPRESAS</th>
             
         </tr>
     </tfoot>

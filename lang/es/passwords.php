@@ -14,6 +14,7 @@ return [
     */
 
     'reset' => '¡Su contraseña ha sido restablecida!',
+    'min' => 'La :attribute debe tener al menos 8 caracteres.',
     'sent' => '¡Recordatorio de contraseña enviado!',
     'token' => 'Este token de restablecimiento de contraseña es inválido.',
     'user' => 'No se ha encontrado un usuario con esa dirección de correo.',

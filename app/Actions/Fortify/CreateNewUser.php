@@ -34,6 +34,8 @@ class CreateNewUser implements CreatesNewUsers
         'password' => Hash::make($input['password']),
         ]);
 
+        
+
     // Asignar el rol 'postulante' al usuario
     if ($input['tipo-usuario']=="Empresa")
         $user->assignRole('empresa');

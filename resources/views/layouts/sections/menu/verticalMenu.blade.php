@@ -31,26 +31,26 @@ $configData = Helper::appClasses();
 
   <ul class="menu-inner py-1">
 
-  @php
-  $user = auth()->user();
+    @php
+    $user = auth()->user();
 
-  if ($user) {
-      // Obtener el primer rol del usuario
-      $roles = $user->roles;
+    if ($user) {
+    // Obtener el primer rol del usuario
+    $roles = $user->roles;
 
-      if (!empty($roles)) {
-          $primerRol = $roles[0]->name;
-          // $primerRol ahora contiene el nombre del primer rol del usuario
-          
-      }
-  }
-  @endphp
+    if (!empty($roles)) {
+    $primerRol = $roles[0]->name;
+    // $primerRol ahora contiene el nombre del primer rol del usuario
 
-    
+    }
+    }
+    @endphp
+
+
     @foreach ($menuData[0]->$primerRol as $menu)
 
     {{-- adding active and open class if child is active --}}
-    
+
     {{-- menu headers --}}
     @if (isset($menu->menuHeader))
     <li class="menu-header small text-uppercase">
@@ -89,7 +89,7 @@ $configData = Helper::appClasses();
       <a href="{{ isset($menu->url) ? url($menu->url) : 'javascript:void(0);' }}" class="{{ isset($menu->submenu) ? 'menu-link menu-toggle' : 'menu-link' }}" @if (isset($menu->target) and !empty($menu->target)) target="_blank" @endif>
         @isset($menu->icon)
         <i class="{{ $menu->icon }}"></i>
-        
+
         @endisset
         <div>{{ isset($menu->name) ? __($menu->name) : '' }}</div>
       </a>
@@ -101,7 +101,15 @@ $configData = Helper::appClasses();
     </li>
     @endif
     @endforeach
-    
+    <li class="menu-item {{$activeClass}}">
+      <form method="POST" id="logout-form" action="{{ route('logout') }}">
+        @csrf
+        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-log-out"></i>
+          <div>Cerrar Sesión</div>
+        </a>
+      </form>
+    </li>
   </ul>
 
 </aside>
