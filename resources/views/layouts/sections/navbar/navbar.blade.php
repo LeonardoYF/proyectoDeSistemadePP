@@ -43,25 +43,122 @@ $containerNav = $containerNav ?? 'container-fluid';
         </a>
       </div>
       @role('admin')
+
       <!--/ prueba-->
       <ul class="navbar-nav flex-row align-items-center ms-auto">
-
         <!-- User -->
+        @php
+        $pendientesInfo = app('App\Http\Controllers\Admin\EstudiantesController')->countPendientes();
+        $totalPendientesEstudiantes = $pendientesInfo['totalPendientes'];
+        $estudiantesPendientes = $pendientesInfo['pendientes'];
+        @endphp
 
-
-
+        <!-- NOTIFICACIONES DE ESTUDIANTES -->
         <li class="nav-item navbar-dropdown dropdown-user dropdown">
           <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
             <div class="d-flex align-items-start position-relative">
-              <img src="{{asset('assets/img/avatars/bell.png')}}">
-              <span class="badge bg-danger rounded-circle position-absolute top-60 start-98">
-                1
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-badge-fill" viewBox="0 0 16 16">
+                <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zm4.5 0a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zM8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6m5 2.755C12.146 12.825 10.623 12 8 12s-4.146.826-5 1.755V14a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1z" />
+              </svg>
+              @if ($totalPendientesEstudiantes > 0)
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                {{ $totalPendientesEstudiantes }}
+                <span class="visually-hidden">unread messages</span>
+              </span>
+              @endif
+            </div>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li class="d-flex align-items-center justify-content-center">
+              <span class="align-middle fw-bold">Estudiantes</span>
+            </li>
+            <li>
+              <div class="dropdown-divider"></div>
+            </li>
+            @foreach ($estudiantesPendientes as $estudiante)
+            <li class="d-flex align-items-center mx-2">
+              <a class="dropdown-item" href="#">{{ $estudiante->email }}</a>
+              <form action="{{ route('admin.estudiantes.update',$estudiante->id) }}" method="POST">
+                @csrf
+                @method('PUT')
+                <input type="hidden" name="estado" value="APROBADO">
+                <button type="submit" class="btn btn-success btn-sm mx-2">Aceptar</button>
+              </form>
+              <form action="{{ route('admin.estudiantes.update',$estudiante->id) }}" method="POST">
+                @csrf
+                @method('PUT')
+                <input type="hidden" name="estado" value="RECHAZADO">
+                <button class="btn btn-danger btn-sm" >Rechazar</button>
+              </form>
+              
+            </li>
+            @endforeach
+          </ul>
+        </li>
+        <!-- NOTIFICACIONES DE EMPRESAS -->
+        @php
+        $pendientesInfo = app('App\Http\Controllers\Admin\EmpresasController')->countPendientes();
+        $totalPendientesEmpresas = $pendientesInfo['totalPendientes'];
+        $empresasPendientes = $pendientesInfo['pendientes'];
+        @endphp
+        <li class="nav-item navbar-dropdown dropdown-user dropdown">
+          <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+            <div class="d-flex align-items-start position-relative">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-building" viewBox="0 0 16 16">
+                <path d="M4 2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM4 5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zM7.5 5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zM4.5 8a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5z" />
+                <path d="M2 1a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1zm11 0H3v14h3v-2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V15h3z" />
+              </svg>
+              @if ($totalPendientesEmpresas > 0)
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                {{ $totalPendientesEmpresas }}
+                <span class="visually-hidden">unread messages</span>
+              </span>
+              @endif
+            </div>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li class="d-flex align-items-center justify-content-center">
+              <span class="align-middle fw-bold">Empresas</span>
+            </li>
+            <li>
+              <div class="dropdown-divider"></div>
+            </li>
+            @foreach ($empresasPendientes as $empresa)
+            <li class="d-flex align-items-center mx-2">
+              <a class="dropdown-item" href="#">{{ $empresa->name }} - {{ $empresa->email }}</a>
+              <form action="{{ route('admin.empresas.update',$empresa->id) }}" method="POST">
+                @csrf
+                @method('PUT')
+                <input type="hidden" name="estado" value="APROBADO">
+                <button type="submit" class="btn btn-success btn-sm mx-2">Aceptar</button>
+              </form>
+              <form action="{{ route('admin.empresas.update',$empresa->id) }}" method="POST">
+                @csrf
+                @method('PUT')
+                <input type="hidden" name="estado" value="RECHAZADO">
+                <button class="btn btn-danger btn-sm" >Rechazar</button>
+              </form>
+            </li>
+            @endforeach
+          </ul>
+        </li>
+        <!-- NOTIFICACIONES DE AVISOS -->
+        <li class="nav-item navbar-dropdown dropdown-user dropdown">
+          <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+            <div class="d-flex align-items-start position-relative">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
+                <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5M5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1z" />
+                <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1" />
+              </svg>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                99+
+                <span class="visually-hidden">unread messages</span>
               </span>
             </div>
           </a>
           <ul class="dropdown-menu dropdown-menu-end">
             <li class="d-flex align-items-center justify-content-center">
-              <span class="align-middle fw-bold">Notificaciones</span>
+              <span class="align-middle fw-bold">Avisos</span>
             </li>
             <li>
               <div class="dropdown-divider"></div>
@@ -69,7 +166,6 @@ $containerNav = $containerNav ?? 'container-fluid';
 
           </ul>
         </li>
-
         <!--/ User -->
       </ul>
 
@@ -140,54 +236,7 @@ $containerNav = $containerNav ?? 'container-fluid';
                 <span class="align-middle">Mi Cuenta</span>
               </a>
             </li>
-            @if (Auth::check() && Laravel\Jetstream\Jetstream::hasApiFeatures())
-            <li>
-              <a class="dropdown-item" href="{{ route('api-tokens.index') }}">
-                <i class='bx bx-key me-2'></i>
-                <span class="align-middle">API Tokens</span>
-              </a>
-            </li>
 
-            <li>
-              <div class="dropdown-divider"></div>
-            </li>
-            <li>
-              <h6 class="dropdown-header">Manage Team</h6>
-            </li>
-            <li>
-              <div class="dropdown-divider"></div>
-            </li>
-            <li>
-              <a class="dropdown-item" href="{{ Auth::user() ? route('teams.show', Auth::user()->currentTeam->id) : 'javascript:void(0)' }}">
-                <i class='bx bx-cog me-2'></i>
-                <span class="align-middle">Team Settings</span>
-              </a>
-            </li>
-            @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
-            <li>
-              <a class="dropdown-item" href="{{ route('teams.create') }}">
-                <i class='bx bx-user me-2'></i>
-                <span class="align-middle">Create New Team</span>
-              </a>
-            </li>
-            @endcan
-            <li>
-              <div class="dropdown-divider"></div>
-            </li>
-            <lI>
-              <h6 class="dropdown-header">Switch Teams</h6>
-            </lI>
-            <li>
-              <div class="dropdown-divider"></div>
-            </li>
-            @if (Auth::user())
-            @foreach (Auth::user()->allTeams() as $team)
-            {{-- Below commented code read by artisan command while installing jetstream. !! Do not remove if you want to use jetstream. --}}
-
-            <x-jet-switchable-team :team="$team" />
-            @endforeach
-            @endif
-            @endif
             <li>
               <div class="dropdown-divider"></div>
             </li>
